@@ -32,7 +32,11 @@ RECORDING_FREQUENCY_HZ = 1
 
 ## Usage
 
-In the repo's directory, type `python3 .\scraper.py` to run the script. When logging is done, type `ctrl + c` to kill the process and stop logging. A `.txt` file in the repo will contain the log data. By default the log file will be called `signal_log.txt`, make sure to change the `LOGGING_FILENAME` variable to be the desired variable name.
+In the repo's directory, type `python3 .\scraper.py` to run the script. 
+
+When logging is done, type `ctrl + c` to kill the process and stop logging. A `.txt` file in the repo will contain the log data. 
+
+By default the log file will be called `signal_log.txt`, make sure to change the `LOGGING_FILENAME` variable to be the desired variable name.
 
 ## Potential Pain Points
 
