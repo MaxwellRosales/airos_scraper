@@ -65,7 +65,7 @@ For example, if there is an input element nested in a form element in the html p
 </html>
 ```
 
-Use: `username = driver.find_element(By.XPATH, "//form[input/@name='username']")` to get the location of the input for the username section and then use `username.send_keys(USERNAME)` to send the username to that input element.
+Use `username = driver.find_element(By.XPATH, "//form[input/@name='username']")` to get the location of the input for the username section and then use `username.send_keys(USERNAME)` to send the username to that input element.
 
 To submit the username, do `submit = driver.find_element(By.XPATH, "//form[input/@value='Login']")` to get the location of the submit button element's value field and then use `submit.click()` to "click" on the button to submit the data.
 
