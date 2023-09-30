@@ -36,9 +36,9 @@ This program uses [selenium](https://selenium-python.readthedocs.io/index.html) 
 
 The major pain points with this approach are listed below:
 
-Selenium will try to make get the web page for the airos login screen by trying `driver.get(f'http:{IP}/login.cgi')`. If this doesn't work, the value in the string might have to be changed to be able to get the login screen.
+Selenium will try to make get the web page for the airos login screen by trying `driver.get(f'http:{IP}/login.cgi')`. If this doesn't work, the value in the string might have to be changed to be able to get the login screen. Try changing the string to different URLs to get the data.
 
-Grabbing elements from an HTML page is done by using `driver.find_element(...)`. If this line of code does not work, open inspect element (`ctrl + shift + c`) and look for the element that needs to be accessed. The [selenium locating elements](https://selenium-python.readthedocs.io/locating-elements.html) page is a great resource for this.
+Grabbing elements from an HTML page is done by using `driver.find_element(...)`. If this line of code does not work, open inspect element (`ctrl + shift + c`) and look for the element that needs to be accessed. The [selenium locating elements](https://selenium-python.readthedocs.io/locating-elements.html) page is a great resource for this. Below is an example of finding elements by their path in the HTML document which will be a good reference if something does not work.
 
 NOTE: The following example references the HTML code below, make sure to generalize this to the airos html page if things don't work.
 
