@@ -4,39 +4,7 @@ The purpose of this file is to scrape data off of the airos 8 webpage created wh
 
 This program was designed to work on a Windows Powershell Environment (Although hopefully the software moves over to Linux in the future)
 
-To start, clone the repo, open a Powershell terminal, and then `cd` into the directory where the repo is cloned.
-
-## Dependencies
-Ensure that Python3 is installed through the Microsoft appstore and then check that pip is updated by entering the following into Powershell:
-
-`python3 -m pip install --upgrade pip`
-
-To install webscraper dependencies, ensure you are in the project repo and type the following:
-
-`pip3 install -r requirements.txt`
-
-## System Parameters
-Change lines 9-10 to match the desired variables
-```
-# SYSTEM PARAMETERS
-IP                     = '192.168.1.20'
-USERNAME               = 'GO'
-PASSWORD               = 'BLUE'
-LOGGING_FILENAME       = "signal_log.txt"
-RECORDING_FREQUENCY_HZ = 1
-```
-
-`LOGGING_FILENAME` is the name of the log file that will be generated in the same directory as `scraper.py`
-
-`RECORDING_FREQUENCY_HZ` is the number of data entries per second that will be generated.
-
-## Usage
-
-In the repo's directory, type `python3 .\scraper.py` to run the script. 
-
-When logging is done, type `ctrl + c` to kill the process and stop logging. A `.txt` file in the repo will contain the log data. 
-
-By default the log file will be called `signal_log.txt`, make sure to change the `LOGGING_FILENAME` variable to be the desired variable name.
+To start, make a new folder, clone the repo in the folder, make a file named `credentials.py`, open a Powershell terminal, and then `cd` into the directory where the repo is cloned.
 
 ## Expected File Structure
 ```
@@ -50,6 +18,39 @@ C:.
         requirements.txt
         scraper.py
 ```
+
+## Dependencies
+Ensure that Python3 is installed through the Microsoft appstore and then check that pip is updated by entering the following into Powershell:
+
+`python3 -m pip install --upgrade pip`
+
+To install webscraper dependencies, ensure you are in the project repo and type the following:
+
+`pip3 install -r requirements.txt`
+
+## System Parameters
+Add sign in information to the new `credentials.py` file.
+```
+IP                     = '<GS IP HERE>'
+USERNAME               = 'GO'
+PASSWORD               = 'BLUE!'
+```
+
+Change the parameters in `airos_scraper/scraper.py` as needed
+
+```
+LOADING_DELAY          = 10 # Time to wait for the website to load on startup
+LOGGING_FILENAME       = "<LOG_FILE_NAME>.txt"
+RECORDING_FREQUENCY_HZ = n  # n = integer data logs per second
+```
+
+## Usage
+
+In the repo's directory, type `python3 .\scraper.py` to run the script. 
+
+When logging is done, type `ctrl + c` to kill the process and stop logging. A `.txt` file in the repo will contain the log data. 
+
+By default the log file will be called `signal_log.txt`, make sure to change the `LOGGING_FILENAME` variable to be the desired variable name.
 
 ## Potential Pain Points
 
@@ -83,5 +84,6 @@ Use `username = driver.find_element(By.XPATH, "//form[input/@name='username']")`
 To submit the username, do `submit = driver.find_element(By.XPATH, "//form[input/@value='Login']")` to get the location of the submit button element's value field and then use `submit.click()` to "click" on the button to submit the data.
 
 Another problem that might occur would be that the webscraper cannot get into the webpage because it is stuck on an expired SSL certificate warning. The following can be done to fix these issues:
+
         - Have the webscraper connect to this page `https://expired.badssl.com/` and then test different selenium flags.
         - Add delays to wait for the website to load before making any calls to get data.
