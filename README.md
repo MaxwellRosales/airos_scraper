@@ -82,3 +82,6 @@ Use `username = driver.find_element(By.XPATH, "//form[input/@name='username']")`
 
 To submit the username, do `submit = driver.find_element(By.XPATH, "//form[input/@value='Login']")` to get the location of the submit button element's value field and then use `submit.click()` to "click" on the button to submit the data.
 
+Another problem that might occur would be that the webscraper cannot get into the webpage because it is stuck on an expired SSL certificate warning. The following can be done to fix these issues:
+        - Have the webscraper connect to this page `https://expired.badssl.com/` and then test different selenium flags.
+        - Add delays to wait for the website to load before making any calls to get data.
