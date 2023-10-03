@@ -38,6 +38,19 @@ When logging is done, type `ctrl + c` to kill the process and stop logging. A `.
 
 By default the log file will be called `signal_log.txt`, make sure to change the `LOGGING_FILENAME` variable to be the desired variable name.
 
+## Expected File Structure
+```
+Folder PATH listing for volume OS
+Volume serial number is C07F-B87E
+C:.
+│   credentials.py #Contains all of the private sign in credentials
+│   
+└───airos_scraper
+        README.md
+        requirements.txt
+        scraper.py
+```
+
 ## Potential Pain Points
 
 This program uses [selenium](https://selenium-python.readthedocs.io/index.html) to get data from a website. Essentially, a browser opens in the background and that browser can receive commands through Python and send data back to the Python process. 
