@@ -39,9 +39,9 @@ PASSWORD               = 'BLUE!'
 Change the parameters in `airos_scraper/scraper.py` as needed
 
 ```
-LOADING_DELAY          = 10 # Time to wait for the website to load on startup
-LOGGING_FILENAME       = "<LOG_FILE_NAME>.txt"
-RECORDING_FREQUENCY_HZ = n  # n = integer data logs per second
+LOADING_DELAY            = 10 # Time to wait for the website to load on startup
+LOGGING_FILENAME         = "<LOG_FILE_NAME>.txt"
+RECORDING_PERIOD_SECONDS = n  # time in seconds between each data log.
 ```
 
 ## Usage
