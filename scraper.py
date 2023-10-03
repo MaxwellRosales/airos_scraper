@@ -14,10 +14,13 @@ LOGGING_FILENAME       = "signal_log.txt"
 RECORDING_FREQUENCY_HZ = 1
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
+chrome_options.add_argument('--ignore-certificate-errors')
+chrome_options.add_experimental_option("detach", True)
+chrome_options.accept_insecure_certs = True
 
 # TODO: Add error handling
-def log_into_airos() -> None:
+def get_site() -> None:
     global driver 
 
     # Create a webdriver without a GUI to fetch data from
@@ -25,9 +28,12 @@ def log_into_airos() -> None:
     driver = webdriver.Chrome(options=chrome_options)
     print('Driver started.')
 
-    print('Logging in...')
-    driver.get(f'http:{IP}/login.cgi')
+    print('Going to site...')
+    #driver.get(f'https:{IP}/login.cgi')
+    driver.get("https://expired.badssl.com/")
 
+
+def log_into_airos() -> None:
     user_form = driver.find_element(By.ID, 'username')
     pass_form = driver.find_element(By.ID, 'password')
 
@@ -39,24 +45,26 @@ def log_into_airos() -> None:
 
 
 def fetch_signal() -> int:
-    driver.get(f'http:{IP}/signal.cgi')
+    driver.get(f'https:{IP}/signal.cgi')
     return json.loads(driver.find_element(By.TAG_NAME ,'body').text)['signal']
 
 
 def main()-> None: 
-    log_into_airos()
-    logging.basicConfig(filename=LOGGING_FILENAME,
-                        filemode='a',
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.DEBUG)
-    logging.info("\nSTARTING LOG\n")
-    while True:
-        scraper_signal = fetch_signal()
-        print(scraper_signal)
-        logging.info(f"{scraper_signal}")
-
-        time.sleep(RECORDING_FREQUENCY_HZ)
+    get_site()
+    #
+    #log_into_airos()
+    #logging.basicConfig(filename=LOGGING_FILENAME,
+    #                    filemode='a',
+    #                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+    #                    datefmt='%H:%M:%S',
+    #                    level=logging.DEBUG)
+    #logging.info("\nSTARTING LOG\n")
+    #while True:
+    #    scraper_signal = fetch_signal()
+    #    print(scraper_signal)
+    #    logging.info(f"{scraper_signal}")
+#
+    #    time.sleep(RECORDING_FREQUENCY_HZ)
 
 
 if __name__ == '__main__':
