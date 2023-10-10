@@ -101,8 +101,24 @@ def main()-> None:
 
     while True:
         scraper_signal  = fetch_status()
-        gs_sta = scraper_signal["wireless"]["sta"][0]["rssi"]
-        logging.info(f"{gs_sta}")
+        
+        gs_rssi = scraper_signal["wireless"]["sta"][0]["rssi"]
+
+        ##################################################
+        # UNTESTED, COMMENT THIS OUT IF IT DOES NOT WORK #
+        remote_rssi   = scraper_signal["wireless"]["sta"][0]["remote"]["rssi"]
+        gs_signal     = scraper_signal["wireless"]["sta"][0]["signal"]
+        remote_signal = scraper_signal["wireless"]["sta"][0]["remote"]["signal"]
+        gs_rx         = scraper_signal["wireless"]["sta"][0]["stats"]["rx_bytes"]
+        gs_tx         = scraper_signal["wireless"]["sta"][0]["stats"]["tx_bytes"]
+        remote_rx     = scraper_signal["wireless"]["sta"][0]["remote"]["rx_bytes"]
+        remote_tx     = scraper_signal["wireless"]["sta"][0]["remote"]["tx_bytes"]
+        
+        logging.info(f"{gs_rssi}, {remote_rssi}, {gs_signal}, {remote_signal}, {gs_rx}, {gs_tx}, {remote_rx}, {remote_tx}") 
+        ##################################################
+        
+        #logging.info(f"{gs_rssi}") # Uncomment this if above does not work
+        
         time.sleep(RECORDING_PERIOD_SECONDS)
 
 if __name__ == '__main__':
